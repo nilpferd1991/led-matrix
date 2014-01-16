@@ -8,17 +8,33 @@
 
 #include <Cell.h>
 
+/**
+ * This stores all the cells on the playground.
+ */
 class Field {
 public:
-	Field(unsigned int& sizeX, unsigned int& sizeY);
+
+	Field(const unsigned int& sizeX, const unsigned int& sizeY);
 	virtual ~Field();
 
-	Cell getField();
+	Cell getField() const; // this is just wrong ... return pointer on the array instead
 	void fillFieldMono(bool iniStatus);
 
 private:
-	unsigned int m_sizeX;
-	unsigned int m_sizeY;
+
+	/**
+	 * Size of x direction of the board.
+	 */
+	const unsigned int m_sizeX;
+
+	/**
+	 * Size of y direction of the board.
+	 */
+	const unsigned int m_sizeY;
+
+	/**
+	 * The board internally.
+	 */
 	Cell m_field[16][16]; // this is hardware limited for us.
 };
 
