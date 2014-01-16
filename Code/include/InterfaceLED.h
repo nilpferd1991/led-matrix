@@ -27,7 +27,7 @@ public:
      * turn the LEDs on.
      * @param field the field to be shown
      */
-	void showField(Field field);
+	void showField(const Field & field);
 
 private:
 
@@ -49,7 +49,7 @@ private:
 	/**
 	 * m_waitingTime is the amount of time between two columns in µs
 	 */
-	static const uint16_t m_waitingTime = 100;
+	static const uint16_t m_waitingTime = 1000;
 
 };
 
