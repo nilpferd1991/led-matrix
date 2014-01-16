@@ -11,14 +11,16 @@ InterfaceLED::InterfaceLED() {
 	// initialize pins
 	DDRB = 0xFF;
 	PORTB = 0;
-
 }
 
 InterfaceLED::~InterfaceLED() {
 	// TODO Auto-generated destructor stub
 }
 
-void InterfaceLED::showField(Field field) {
+void InterfaceLED::showField(const Field& field) {
+
+
+
 
 	// loop through all columns
 	for(uint8_t column = 0; column < 8; column++) {
@@ -59,7 +61,7 @@ void InterfaceLED::showField(Field field) {
 		// Turn on writing on LED matrix
 		PORTB |= (1 << InterfaceLED::m_strobePin);
 
-		_delay_ms(InterfaceLED::m_waitingTime);
+		_delay_us(InterfaceLED::m_waitingTime);
 
 	}
 
