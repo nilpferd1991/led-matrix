@@ -17,7 +17,7 @@ public:
 	Field(const unsigned int& sizeX, const unsigned int& sizeY);
 	virtual ~Field();
 
-	Cell getField() const; // this is just wrong ... return pointer on the array instead
+	Cell getField(const unsigned int& column, const unsigned int& row) const; // this is just wrong ... return pointer on the array instead
 	void fillFieldMono(bool iniStatus);
 
 private:
