@@ -26,11 +26,12 @@ Field::~Field() {
 
 /**
  * Returns the internally stored field. This is needed by the led lightup routine.
- * @return x*y size array of type Cell
- * TODO: Fix return type
+ * @param column the column to be asked
+ * @param row the row to be asked
+ * @return Cell with adress [column, row]
  */
-Cell Field::getField() const {
-	return m_field;
+Cell Field::getField(const unsigned int& column, const unsigned int& row) const {
+	return m_field[column][row];
 }
 
 /**
