@@ -7,7 +7,11 @@
 
 #pragma once
 
+/**
+ * Simple cell class
+ */
 class Cell {
+
 public:
 	Cell();
 	Cell(bool iniStatus);
@@ -16,5 +20,8 @@ public:
 	bool getCellStatus() const;
 
 private:
+	/**
+	 * Stores status of the cell.
+	 */
 	bool m_Status;
 };
