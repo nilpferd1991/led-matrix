@@ -25,6 +25,6 @@ int main() {
 	InterfaceLED interface;
 
 	while(1) {
-		interface.showField(field);
+		interface.showField(field, waitingTime);
 	}
 }
