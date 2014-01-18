@@ -30,7 +30,8 @@ InterfaceLED::~InterfaceLED() {
  * and turns the rows to on, which have a turned on cell in this column.
  * Sends clock signals to the shift registers and turns STROBE off while writing (to prevent flickering).
  * @param field the field to be shown
- * @param waitingTime the waiting time between to columns in µs. It controls the brightness of the LEDs
+ * @param waitingTime the waiting time between to columns in µs. It controls the brightness of the LEDs.
+ * Values beyond approx. 2000 leed to flickering of the LEDs, values smaller than 100 make the LED too dark.
  * @todo just an implementation of two shift registers
  */
 void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
@@ -70,6 +71,12 @@ void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 			}
 		}
 
+		// why is the last clock needed?
+		PORTB |= (1 << InterfaceLED::m_clockPin);
+		PORTB &= ~(1 << InterfaceLED::m_clockPin);
+		PORTB &= ~(1 << InterfaceLED::m_dataPin);
+
+
 
 		// Turn on writing on LED matrix
 		PORTB |= (1 << InterfaceLED::m_strobePin);
@@ -78,9 +85,5 @@ void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 			_delay_us(1);
 		}
 	}
-
-	// last clock
-	PORTB |= (1 << InterfaceLED::m_clockPin);
-	PORTB &= ~(1 << InterfaceLED::m_clockPin);
 
 }

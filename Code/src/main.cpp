@@ -1,5 +1,5 @@
 /**
- * @name led-amtrix
+ * @name led-matrix
  * @file main.cpp
  * @version 1.0.0
  * @author Markus Prim & Nils Braun
@@ -24,10 +24,7 @@ int main() {
 
 	InterfaceLED interface;
 
-	DDRA = 0xFF;
-	PORTA = 0xFF;
-
 	while(1) {
-		interface.showField(field);
+		interface.showField(field, waitingTime);
 	}
 }
