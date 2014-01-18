@@ -12,7 +12,7 @@
 * @param sizeX Number of LEDs in x
 * @param sizeY Number of LEDs in y
 * */
-Field::Field(const unsigned int& sizeX, const unsigned int& sizeY) : m_sizeX(sizeX), m_sizeY(sizeY) {
+Field::Field(const uint8_t& sizeX, const uint8_t& sizeY) : m_sizeX(sizeX), m_sizeY(sizeY) {
 	// all cells on the field are dead
 }
 

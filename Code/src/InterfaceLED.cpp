@@ -20,7 +20,7 @@ InterfaceLED::~InterfaceLED() {
 void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 
 	// loop through all columns
-	for(uint8_t column = 0; column < 8; column++) {
+	for(uint8_t column = 0; column < field.getSizeX(); column++) {
 
 		// Turn of writing on LED matrix
 		PORTB &= ~(1 << InterfaceLED::m_strobePin);
@@ -40,7 +40,7 @@ void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 			}
 		}
 
-		for(uint8_t row = 0; row < 8; row++) {
+		for(uint8_t row = 0; row < field.getSizeY(); row++) {
 			// one clock
 			PORTB |= (1 << InterfaceLED::m_clockPin);
 			PORTB &= ~(1 << InterfaceLED::m_clockPin);
