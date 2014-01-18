@@ -17,10 +17,7 @@ InterfaceLED::~InterfaceLED() {
 	// TODO Auto-generated destructor stub
 }
 
-void InterfaceLED::showField(const Field& field) {
-
-
-
+void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 
 	// loop through all columns
 	for(uint8_t column = 0; column < 8; column++) {
@@ -61,8 +58,9 @@ void InterfaceLED::showField(const Field& field) {
 		// Turn on writing on LED matrix
 		PORTB |= (1 << InterfaceLED::m_strobePin);
 
-		_delay_us(InterfaceLED::m_waitingTime);
-
+		for(uint16_t time = waitingTime; time > 0; time--) {
+			_delay_us(1);
+		}
 	}
 
 	// last clock
