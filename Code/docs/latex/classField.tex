@@ -1,0 +1,98 @@
+\hypertarget{classField}{\section{Field Class Reference}
+\label{classField}\index{Field@{Field}}
+}
+
+
+{\ttfamily \#include $<$Field.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classField_a3732c7c2620b195e38610abdb48766ac}{Field} (const uint8\-\_\-t \&size\-X, const uint8\-\_\-t \&size\-Y)
+\item 
+\hyperlink{classCell}{Cell} \hyperlink{classField_a6b9088fd3fb3bd010eaa6133cf52ed18}{get\-Field} (const unsigned int \&column, const unsigned int \&row) const 
+\item 
+void \hyperlink{classField_aa3b7173cf7b034dec1318afbf1f5c291}{fill\-Field\-Mono} (bool ini\-Status)
+\item 
+\hypertarget{classField_a746054da9da8022a07fc13451c14965c}{const uint8\-\_\-t {\bfseries get\-Size\-X} () const }\label{classField_a746054da9da8022a07fc13451c14965c}
+
+\item 
+\hypertarget{classField_a0746b3584456b5f61248b48e9886d272}{const uint8\-\_\-t {\bfseries get\-Size\-Y} () const }\label{classField_a0746b3584456b5f61248b48e9886d272}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This stores all the cells on the playground. 
+
+Definition at line 15 of file Field.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classField_a3732c7c2620b195e38610abdb48766ac}{\index{Field@{Field}!Field@{Field}}
+\index{Field@{Field}!Field@{Field}}
+\subsubsection[{Field}]{\setlength{\rightskip}{0pt plus 5cm}Field\-::\-Field (
+\begin{DoxyParamCaption}
+\item[{const uint8\-\_\-t \&}]{size\-X, }
+\item[{const uint8\-\_\-t \&}]{size\-Y}
+\end{DoxyParamCaption}
+)}}\label{classField_a3732c7c2620b195e38610abdb48766ac}
+Creates the playground with size x$\ast$y 
+\begin{DoxyParams}{Parameters}
+{\em size\-X} & Number of L\-E\-Ds in x \\
+\hline
+{\em size\-Y} & Number of L\-E\-Ds in y \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 15 of file Field.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classField_aa3b7173cf7b034dec1318afbf1f5c291}{\index{Field@{Field}!fill\-Field\-Mono@{fill\-Field\-Mono}}
+\index{fill\-Field\-Mono@{fill\-Field\-Mono}!Field@{Field}}
+\subsubsection[{fill\-Field\-Mono}]{\setlength{\rightskip}{0pt plus 5cm}void Field\-::fill\-Field\-Mono (
+\begin{DoxyParamCaption}
+\item[{bool}]{ini\-Status}
+\end{DoxyParamCaption}
+)}}\label{classField_aa3b7173cf7b034dec1318afbf1f5c291}
+Sets the bord with only living or dead cells. 
+\begin{DoxyParams}{Parameters}
+{\em ini\-Status} & true=living, false=dead cell \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 41 of file Field.\-cpp.
+
+\hypertarget{classField_a6b9088fd3fb3bd010eaa6133cf52ed18}{\index{Field@{Field}!get\-Field@{get\-Field}}
+\index{get\-Field@{get\-Field}!Field@{Field}}
+\subsubsection[{get\-Field}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Cell} Field\-::get\-Field (
+\begin{DoxyParamCaption}
+\item[{const unsigned int \&}]{column, }
+\item[{const unsigned int \&}]{row}
+\end{DoxyParamCaption}
+) const}}\label{classField_a6b9088fd3fb3bd010eaa6133cf52ed18}
+Returns the internally stored field. This is needed by the led lightup routine. 
+\begin{DoxyParams}{Parameters}
+{\em column} & the column to be asked \\
+\hline
+{\em row} & the row to be asked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classCell}{Cell} with adress \mbox{[}column, row\mbox{]} 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file Field.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/\-Daten/\-Projects/\-C/\-L\-E\-D-\/\-Matrix/\-Code/include/Field.\-h\item 
+/media/\-Daten/\-Projects/\-C/\-L\-E\-D-\/\-Matrix/\-Code/src/Field.\-cpp\end{DoxyCompactItemize}

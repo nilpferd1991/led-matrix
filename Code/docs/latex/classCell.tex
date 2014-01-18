@@ -1,0 +1,84 @@
+\hypertarget{classCell}{\section{Cell Class Reference}
+\label{classCell}\index{Cell@{Cell}}
+}
+
+
+{\ttfamily \#include $<$Cell.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell} ()
+\item 
+\hyperlink{classCell_a3d538983994d6ac4db4c21c26c0fc2b7}{Cell} (bool ini\-Status)
+\item 
+virtual \hyperlink{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{$\sim$\-Cell} ()
+\item 
+bool \hyperlink{classCell_a737e22fa57260128e8e9dc3c168eca38}{get\-Cell\-Status} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple cell class 
+
+Definition at line 13 of file Cell.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCell_a394510643e8664cf12b5efaf5cb99f71}{\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\subsubsection[{Cell}]{\setlength{\rightskip}{0pt plus 5cm}Cell\-::\-Cell (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classCell_a394510643e8664cf12b5efaf5cb99f71}
+\hyperlink{classCell}{Cell} constructor with no argument. Cells produced this way are always dead. 
+
+Definition at line 15 of file Cell.\-cpp.
+
+\hypertarget{classCell_a3d538983994d6ac4db4c21c26c0fc2b7}{\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\subsubsection[{Cell}]{\setlength{\rightskip}{0pt plus 5cm}Cell\-::\-Cell (
+\begin{DoxyParamCaption}
+\item[{bool}]{ini\-Status}
+\end{DoxyParamCaption}
+)}}\label{classCell_a3d538983994d6ac4db4c21c26c0fc2b7}
+\hyperlink{classCell}{Cell} constructor with one argument. Cells produced this way are dead(false) or alive(true). 
+
+Definition at line 23 of file Cell.\-cpp.
+
+\hypertarget{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{\index{Cell@{Cell}!$\sim$\-Cell@{$\sim$\-Cell}}
+\index{$\sim$\-Cell@{$\sim$\-Cell}!Cell@{Cell}}
+\subsubsection[{$\sim$\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}Cell\-::$\sim$\-Cell (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classCell_a9fa559f7a28e2b4336c6879ca09304d8}
+\hyperlink{classCell}{Cell} default destructor. 
+
+Definition at line 30 of file Cell.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCell_a737e22fa57260128e8e9dc3c168eca38}{\index{Cell@{Cell}!get\-Cell\-Status@{get\-Cell\-Status}}
+\index{get\-Cell\-Status@{get\-Cell\-Status}!Cell@{Cell}}
+\subsubsection[{get\-Cell\-Status}]{\setlength{\rightskip}{0pt plus 5cm}bool Cell\-::get\-Cell\-Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classCell_a737e22fa57260128e8e9dc3c168eca38}
+Returns current state of the cell. \begin{DoxyReturn}{Returns}
+alive(true) or dead(false) 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file Cell.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/\-Daten/\-Projects/\-C/\-L\-E\-D-\/\-Matrix/\-Code/include/Cell.\-h\item 
+/media/\-Daten/\-Projects/\-C/\-L\-E\-D-\/\-Matrix/\-Code/src/Cell.\-cpp\end{DoxyCompactItemize}
