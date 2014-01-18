@@ -13,20 +13,17 @@
 #ifndef INTERFACELED_H_
 #define INTERFACELED_H_
 
+/**
+ * Class to interface the programm with the LED matrix via the shift registers
+ * Sends signals to the shift registers to turn the LEDs on and off. Should be uses in the mainloop to
+ * update the LED status permanent.
+ */
 class InterfaceLED {
 public:
 	// Constructor
 	InterfaceLED();
 	// Destructor
 	~InterfaceLED();
-
-    /**
-     * Shows the parameter-field on the LED-matrix.
-     * Needs a certain amount of time, because we
-     * have to loop through all cells and need to
-     * turn the LEDs on.
-     * @param field the field to be shown
-     */
 	void showField(const Field & field, const uint16_t waitingTime = 1000);
 
 private:

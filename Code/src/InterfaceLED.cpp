@@ -7,16 +7,32 @@
 
 #include "InterfaceLED.h"
 
+/**
+ * Standard constructor.
+ * The only constructor of the InterfaceLED class. It initializes the used Ports to output ports
+ * and sets the output to Off befor any actions.
+ */
 InterfaceLED::InterfaceLED() {
-	// initialize pins
 	DDRB = 0xFF;
 	PORTB = 0;
 }
 
+/**
+ * Standard destructor.
+ * Call the implemented standard constructor. No manual correction needed.
+ */
 InterfaceLED::~InterfaceLED() {
-	// TODO Auto-generated destructor stub
 }
 
+/**
+ * Shows a field on the LED matrix.
+ * Loops through the columns (by setting only one 1 for each column consecutively and the rest to zero)
+ * and turns the rows to on, which have a turned on cell in this column.
+ * Sends clock signals to the shift registers and turns STROBE off while writing (to prevent flickering).
+ * @param field the field to be shown
+ * @param waitingTime the waiting time between to columns in µs. It controls the brightness of the LEDs
+ * @todo just an implementation of two shift registers
+ */
 void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 
 	// loop through all columns

@@ -1,10 +1,10 @@
-//============================================================================
-// Name        : led-matrix
-// Author      :
-// Version     :
-// Copyright   :
-// Description :
-//============================================================================
+/**
+ * @name led-amtrix
+ * @file main.cpp
+ * @version 1.0.0
+ * @author Markus Prim & Nils Braun
+ * @brief TODO
+ */
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -13,7 +13,6 @@
 #include <InterfaceLED.h>
 
 int main() {
-
 
 	// this is hardware restricted
 	const unsigned int nXLEDs(8);
@@ -24,7 +23,6 @@ int main() {
 	field.fillFieldMono(false);
 
 	InterfaceLED interface;
-
 
 	DDRA = 0xFF;
 	PORTA = 0xFF;
