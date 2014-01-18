@@ -27,7 +27,7 @@ public:
      * turn the LEDs on.
      * @param field the field to be shown
      */
-	void showField(const Field & field);
+	void showField(const Field & field, const uint16_t waitingTime = 1000);
 
 private:
 
@@ -45,11 +45,6 @@ private:
 	 * m_strobePin is the pin of the CLOCK on Port B.
 	 */
 	static const uint8_t m_clockPin = 0;
-
-	/**
-	 * m_waitingTime is the amount of time between two columns in µs
-	 */
-	static const uint16_t m_waitingTime = 1000;
 
 };
 
