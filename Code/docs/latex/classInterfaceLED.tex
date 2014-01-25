@@ -1,0 +1,78 @@
+\hypertarget{classInterfaceLED}{\section{Interface\-L\-E\-D Class Reference}
+\label{classInterfaceLED}\index{Interface\-L\-E\-D@{Interface\-L\-E\-D}}
+}
+
+
+{\ttfamily \#include $<$Interface\-L\-E\-D.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInterfaceLED_aa3cdca25385e1e813013024dd884952d}{Interface\-L\-E\-D} ()
+\item 
+\hyperlink{classInterfaceLED_a52094aad18a2867fcdaab26ae4c73da8}{$\sim$\-Interface\-L\-E\-D} ()
+\item 
+void \hyperlink{classInterfaceLED_a36a450855235c5d6c413afc433a3ce7f}{show\-Field} (const \hyperlink{classField}{Field} \&field, const uint16\-\_\-t waiting\-Time=1000)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface\-L\-E\-D-\/class to control the output of a field with boolean values to the L\-E\-D matrix. It uses two shift registers to control the rows and columns independently. We cannot use the vector-\/class because it has no implemetation on the microcontroller. Instead we will use a normal array. Class to interface the programm with the L\-E\-D matrix via the shift registers Sends signals to the shift registers to turn the L\-E\-Ds on and off. Should be uses in the mainloop to update the L\-E\-D status permanent. 
+
+Definition at line 21 of file Interface\-L\-E\-D.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classInterfaceLED_aa3cdca25385e1e813013024dd884952d}{\index{Interface\-L\-E\-D@{Interface\-L\-E\-D}!Interface\-L\-E\-D@{Interface\-L\-E\-D}}
+\index{Interface\-L\-E\-D@{Interface\-L\-E\-D}!InterfaceLED@{Interface\-L\-E\-D}}
+\subsubsection[{Interface\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}Interface\-L\-E\-D\-::\-Interface\-L\-E\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classInterfaceLED_aa3cdca25385e1e813013024dd884952d}
+Standard constructor. The only constructor of the \hyperlink{classInterfaceLED}{Interface\-L\-E\-D} class. It initializes the used Ports to output ports and sets the output to Off befor any actions. 
+
+Definition at line 15 of file Interface\-L\-E\-D.\-cpp.
+
+\hypertarget{classInterfaceLED_a52094aad18a2867fcdaab26ae4c73da8}{\index{Interface\-L\-E\-D@{Interface\-L\-E\-D}!$\sim$\-Interface\-L\-E\-D@{$\sim$\-Interface\-L\-E\-D}}
+\index{$\sim$\-Interface\-L\-E\-D@{$\sim$\-Interface\-L\-E\-D}!InterfaceLED@{Interface\-L\-E\-D}}
+\subsubsection[{$\sim$\-Interface\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}Interface\-L\-E\-D\-::$\sim$\-Interface\-L\-E\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classInterfaceLED_a52094aad18a2867fcdaab26ae4c73da8}
+Standard destructor. Call the implemented standard constructor. No manual correction needed. 
+
+Definition at line 24 of file Interface\-L\-E\-D.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classInterfaceLED_a36a450855235c5d6c413afc433a3ce7f}{\index{Interface\-L\-E\-D@{Interface\-L\-E\-D}!show\-Field@{show\-Field}}
+\index{show\-Field@{show\-Field}!InterfaceLED@{Interface\-L\-E\-D}}
+\subsubsection[{show\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void Interface\-L\-E\-D\-::show\-Field (
+\begin{DoxyParamCaption}
+\item[{const {\bf Field} \&}]{field, }
+\item[{const uint16\-\_\-t}]{waiting\-Time = {\ttfamily 1000}}
+\end{DoxyParamCaption}
+)}}\label{classInterfaceLED_a36a450855235c5d6c413afc433a3ce7f}
+Shows a field on the L\-E\-D matrix. Loops through the columns (by setting only one 1 for each column consecutively and the rest to zero) and turns the rows to on, which have a turned on cell in this column. Sends clock signals to the shift registers and turns S\-T\-R\-O\-B\-E off while writing (to prevent flickering). 
+\begin{DoxyParams}{Parameters}
+{\em field} & the field to be shown \\
+\hline
+{\em waiting\-Time} & the waiting time between to columns in µs. It controls the brightness of the L\-E\-Ds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]just an implementation of two shift registers \end{DoxyRefDesc}
+
+
+Definition at line 36 of file Interface\-L\-E\-D.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/media/\-Daten/\-Projects/\-C/\-L\-E\-D-\/\-Matrix/\-Code/include/Interface\-L\-E\-D.\-h\item 
+/media/\-Daten/\-Projects/\-C/\-L\-E\-D-\/\-Matrix/\-Code/src/Interface\-L\-E\-D.\-cpp\end{DoxyCompactItemize}
