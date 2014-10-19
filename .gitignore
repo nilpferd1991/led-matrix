@@ -1,0 +1,11 @@
+.cproject
+.project
+.settings/
+Debug/
+*.un~
+Code/.dep/
+Code/obj/
+doc/
+doxygen.Doxyfile
+
+
