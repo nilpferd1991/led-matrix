@@ -25,10 +25,13 @@ public:
 	InterfaceLED(Field * const field);
 	// Destructor
 	~InterfaceLED();
-	void showField(const uint16_t waitingTime = 1000);
-	void waitCycles(const uint16_t cycles);
+	void showCycles(const uint16_t cycles);
+	void setField(Field * const field) { m_field = field; }
+	Field * const getField() { return m_field; }
 
 private:
+
+	void showField(const uint16_t waitingTime = 1000);
 
 	/**
 	 * m_strobePin is the pin of the STROBE on Port B.
@@ -45,6 +48,9 @@ private:
 	 */
 	static const uint8_t m_clockPin = 0;
 
+	/**
+	 * m_enableOutputPin is the pin of the ENABLEOUTPUT on Port B.
+	 */
 	static const uint8_t m_outputEnablePin = 3;
 
 	Field * m_field;

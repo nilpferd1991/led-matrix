@@ -14,22 +14,17 @@
 #include <Evolution.h>
 
 int main() {
-	
-	DDRD = 0xFF;
-	PORTD = 0xFF;
-	
 	// setup conways game of life
-	Field field;
-	field.fillFieldMono(true);
-
-	InterfaceLED interface(&field);
+	InterfaceLED interface(new Field);
+	interface.getField()->fillFieldMono(true);
 	Evolution evolve;
 
-	interface.waitCycles(64*7);
-	PORTD = 0x0;
+	// Starting
+	interface.showCycles(64);
 
+	// Mainloop
 	while(1) {
-		interface.waitCycles(16);
-		field = evolve.evolve(field);
+		interface.showCycles(8);
+		//interface.setField(evolve.evolve(interface.getField()));
 	}
 }

@@ -113,7 +113,7 @@ void InterfaceLED::showField(const uint16_t waitingTime) {
 }
 
 
-void InterfaceLED::waitCycles(uint16_t cycles) {
+void InterfaceLED::showCycles(uint16_t cycles) {
 	for(uint16_t t = 0; t < cycles; t++) {
 		showField();
 	}
