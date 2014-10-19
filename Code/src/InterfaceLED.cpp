@@ -17,22 +17,6 @@ InterfaceLED::InterfaceLED() {
 	PORTB = 0;
 	DDRC = 0xFF;
 	PORTC = 0;
-	m_field = 0;
-}
-
-InterfaceLED::InterfaceLED(Field * const field) {
-	DDRB = 0xFF;
-	PORTB = 0;
-	DDRC = 0xFF;
-	PORTC = 0;
-	m_field = field;
-}
-
-/**
- * Standard destructor.
- * Call the implemented standard constructor. No manual correction needed.
- */
-InterfaceLED::~InterfaceLED() {
 }
 
 /**
@@ -43,13 +27,11 @@ InterfaceLED::~InterfaceLED() {
  * @param field the field to be shown
  * @param waitingTime the waiting time between to columns in µs. It controls the brightness of the LEDs.
  * Values beyond approx. 2000 leed to flickering of the LEDs, values smaller than 100 make the LED too dark.
- * @todo just an implementation of two shift registers
  */
-void InterfaceLED::showField(const uint16_t waitingTime) {
+void InterfaceLED::showField(const Field * const field, const uint16_t waitingTime) {
 
 	// loop through all columns
-	for(uint8_t column = 0; column < m_field->getSizeX(); column++) {
-
+	for(uint8_t column = 0; column < field->getSizeX(); column++) {
 
 		PORTB &= ~(1 << InterfaceLED::m_outputEnablePin);
 
@@ -82,13 +64,13 @@ void InterfaceLED::showField(const uint16_t waitingTime) {
 		// Turn of writing on LED matrix
 		PORTC &= ~(1 << InterfaceLED::m_strobePin);
 
-		for(uint8_t row = 0; row < m_field->getSizeY(); row++) {
+		for(uint8_t row = 0; row < field->getSizeY(); row++) {
 			// one clock
 			PORTC |= (1 << InterfaceLED::m_clockPin);
 			PORTC &= ~(1 << InterfaceLED::m_clockPin);
 
 			// write 1 to data if cell is set
-			if(m_field->getField(column,row).getCellStatus() == true) {
+			if(field->getField(column,row).getCellStatus() == true) {
 				PORTC |= (1 << InterfaceLED::m_dataPin);
 			}
 			else {
@@ -113,8 +95,8 @@ void InterfaceLED::showField(const uint16_t waitingTime) {
 }
 
 
-void InterfaceLED::showCycles(uint16_t cycles) {
+void InterfaceLED::showCycles(const Field * const field, uint16_t cycles) {
 	for(uint16_t t = 0; t < cycles; t++) {
-		showField();
+		showField(field);
 	}
 }

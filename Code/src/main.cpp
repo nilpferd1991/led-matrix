@@ -11,23 +11,23 @@
 
 #include <Field.h>
 #include <InterfaceLED.h>
-#include <Evolution.h>
+#include <Animator.h>
 
 int main() {
 	// setup conways game of life
-	InterfaceLED interface();
+	InterfaceLED interface;
+
 	Animator animator(new Field);
 	animator.getField()->fillFieldMono(true);
 
 	// Starting
-	interface.showCycles(64);
+	interface.showCycles(animator.getField(), 64);
 
 	// Blank
 	animator.getField()->fillFieldMono(false);
 
-	// Mainloop
+	// Main loop
 	while(1) {
-		interface.showCycles(8);
-		interface.showField(animator.getNextGeneration());
+		interface.showCycles(animator.getNextGeneration(), 8);
 	}
 }
