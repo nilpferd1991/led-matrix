@@ -9,8 +9,16 @@ Field* const Evolution::animation(Field* const currentGeneration) {
     Field nextGeneration;
     unsigned int x = m_numberOfGenerations % 8;
     unsigned int y = m_numberOfGenerations % 8;
-    nextGeneration.setField(x, y, true);
-    nextGeneration.setField(8 - x, 8 - y, true);
+    nextGeneration.setField(7 - x, y, true);
+    nextGeneration.setField(x, 7 - y, true);
+    ++m_numberOfGenerations;
+    return &nextGeneration;
+}
+
+
+Field* const Evolution::conway(Field* const currentGeneration) { 
+    Field nextGeneration;
+
     ++m_numberOfGenerations;
     return &nextGeneration;
 }
