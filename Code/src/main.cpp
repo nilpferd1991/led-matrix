@@ -15,18 +15,19 @@
 
 int main() {
 	// setup conways game of life
-	InterfaceLED interface(new Field);
-	interface.getField()->fillFieldMono(true);
-	Evolution evolve;
+	InterfaceLED interface();
+	Animator animator(new Field);
+	animator.getField()->fillFieldMono(true);
 
 	// Starting
 	interface.showCycles(64);
 
-	interface.getField()->fillFieldMono(false);
+	// Blank
+	animator.getField()->fillFieldMono(false);
 
 	// Mainloop
 	while(1) {
 		interface.showCycles(8);
-		interface.setField(evolve.animation(interface.getField()));
+		interface.showField(animator.getNextGeneration());
 	}
 }

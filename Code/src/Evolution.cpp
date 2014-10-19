@@ -5,14 +5,17 @@
 Evolution::Evolution() : m_numberOfGenerations(0) {
 }
 
-Field* const Evolution::animation(Field* const currentGeneration) {
-    currentGeneration->fillFieldMono(false);
+void Evolution::animation() {
+	Field * newGeneration = new Field;
+	newGeneration->fillFieldMono(false);
     unsigned int x = m_numberOfGenerations % 8;
     unsigned int y = m_numberOfGenerations % 8;
-    currentGeneration->setField(7 - x, y, true);
-    currentGeneration->setField(x, 7 - y, true);
+    newGeneration->setField(7 - x, y, true);
+    newGeneration->setField(x, 7 - y, true);
+    newGeneration->setField(7- x, 7 - y, true);
+    newGeneration->setField(x, y, true);
     ++m_numberOfGenerations;
-    return currentGeneration;
+    m_field = newGeneration;
 }
 
 

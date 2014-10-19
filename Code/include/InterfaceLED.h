@@ -22,12 +22,10 @@ class InterfaceLED {
 public:
 	// Constructor
 	InterfaceLED();
-	InterfaceLED(Field * const field);
+	InterfaceLED();
 	// Destructor
 	~InterfaceLED();
-	void showCycles(const uint16_t cycles);
-	void setField(Field * const field) { m_field = field; }
-	Field * const getField() { return m_field; }
+	void showCycles(Field * const field, const uint16_t cycles);
 
 private:
 
