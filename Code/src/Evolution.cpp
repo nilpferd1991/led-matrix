@@ -6,13 +6,13 @@ Evolution::Evolution() : m_numberOfGenerations(0) {
 }
 
 Field* const Evolution::animation(Field* const currentGeneration) {
-    Field nextGeneration;
+    currentGeneration->fillFieldMono(false);
     unsigned int x = m_numberOfGenerations % 8;
     unsigned int y = m_numberOfGenerations % 8;
-    nextGeneration.setField(7 - x, y, true);
-    nextGeneration.setField(x, 7 - y, true);
+    currentGeneration->setField(7 - x, y, true);
+    currentGeneration->setField(x, 7 - y, true);
     ++m_numberOfGenerations;
-    return &nextGeneration;
+    return currentGeneration;
 }
 
 

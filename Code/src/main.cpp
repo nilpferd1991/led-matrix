@@ -22,6 +22,8 @@ int main() {
 	// Starting
 	interface.showCycles(64);
 
+	interface.getField()->fillFieldMono(false);
+
 	// Mainloop
 	while(1) {
 		interface.showCycles(8);
