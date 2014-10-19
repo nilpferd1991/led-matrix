@@ -25,5 +25,6 @@ int main() {
 	// Mainloop
 	while(1) {
 		interface.showCycles(8);
+		interface.setField(evolve.animation(interface.getField()));
 	}
 }
