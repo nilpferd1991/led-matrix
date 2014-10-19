@@ -20,13 +20,77 @@
  */
 class InterfaceLED {
 public:
-	// Constructor
-	InterfaceLED();
-	void showCycles(const Field * const field, const uint16_t cycles);
+	/**
+	 * Standard constructor.
+	 * The only constructor of the InterfaceLED class. It initializes the used Ports to output ports
+	 * and sets the output to Off before any actions.
+	 */
+	InterfaceLED() {
+		DDRB = 0xFF;
+		PORTB = 0;
+		DDRC = 0xFF;
+		PORTC = 0;
+	}
+
+	void showCycles(const Field * const field, const uint16_t cycles) const;
 
 private:
 
-	void showField(const Field * const field, const uint16_t waitingTime = 1000);
+	void showField(const Field * const field, const uint16_t waitingTime = 1000) const;
+
+	void enableOutput() const {
+		PORTB |= (1 << InterfaceLED::m_outputEnablePin);
+	}
+	void disableOutput() const {
+		PORTB &= ~(1 << InterfaceLED::m_outputEnablePin);
+	}
+
+	void enableWritingColumns() const {
+		PORTB &= ~(1 << InterfaceLED::m_strobePin);
+	}
+	void disableWritingColumns() const {
+		PORTB |= (1 << InterfaceLED::m_strobePin);
+	}
+
+	void enableWritingRows() const {
+		PORTC &= ~(1 << InterfaceLED::m_strobePin);
+	}
+	void disableWritingRows() const {
+		PORTC |= (1 << InterfaceLED::m_strobePin);
+	}
+
+	void tickColumns() const {
+		PORTB |= (1 << InterfaceLED::m_clockPin);
+		PORTB &= ~(1 << InterfaceLED::m_clockPin);
+	}
+
+	void tickRows() const {
+		PORTC |= (1 << InterfaceLED::m_clockPin);
+		PORTC &= ~(1 << InterfaceLED::m_clockPin);
+	}
+
+	void setColumn(const bool status) const {
+		if (status) {
+			PORTB |= (1 << InterfaceLED::m_dataPin);
+		}
+		else
+		{
+			PORTB &= ~(1 << InterfaceLED::m_dataPin);
+		}
+	}
+
+	void setRow(const bool status) const {
+		if (status) {
+			PORTC |= (1 << InterfaceLED::m_dataPin);
+		}
+		else
+		{
+			PORTC &= ~(1 << InterfaceLED::m_dataPin);
+		}
+	}
+
+	void writeRows(const Field* const field, uint8_t column) const;
+	void writeColumn(uint8_t column) const;
 
 	/**
 	 * m_strobePin is the pin of the STROBE on Port B.
