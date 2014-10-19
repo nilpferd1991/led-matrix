@@ -5,7 +5,7 @@
 class Evolution {
     public:
         Evolution();
-        Field evolve(const Field& currentGeneration);
+        Field* const animation(Field* const currentGeneration);
     private:
         unsigned int m_numberOfGenerations;
 };

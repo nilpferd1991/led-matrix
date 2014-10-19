@@ -5,10 +5,12 @@
 Evolution::Evolution() : m_numberOfGenerations(0) {
 }
 
-Field Evolution::evolve(const Field& currentGeneration) {
+Field* const Evolution::animation(Field* const currentGeneration) {
     Field nextGeneration;
-    nextGeneration.setField(m_numberOfGenerations % 8, m_numberOfGenerations % 8, true);
-    //Implement rules
+    unsigned int x = m_numberOfGenerations % 8;
+    unsigned int y = m_numberOfGenerations % 8;
+    nextGeneration.setField(x, y, true);
+    nextGeneration.setField(8 - x, 8 - y, true);
     ++m_numberOfGenerations;
-    return nextGeneration;
+    return &nextGeneration;
 }
