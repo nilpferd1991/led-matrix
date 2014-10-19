@@ -23,8 +23,14 @@ int main() {
 	field.fillFieldMono(false);
 
 	InterfaceLED interface;
+		field.setField(0,0, true);
+		field.setField(5,1, true);
+		field.setField(4,2, true);
+		field.setField(3,3, true);
+		field.setField(4,4, true);
 
 	while(1) {
 		interface.showField(field);
+//_delay_ms(1000);
 	}
 }

@@ -34,6 +34,10 @@ Cell Field::getField(const unsigned int& column, const unsigned int& row) const 
 	return m_field[column][row];
 }
 
+void Field::setField(const unsigned int& column, const unsigned int& row, const bool iniStatus) {
+	m_field[column][row] = iniStatus;
+}
+
 /**
  * Sets the bord with only living or dead cells.
  * @param iniStatus true=living, false=dead cell
