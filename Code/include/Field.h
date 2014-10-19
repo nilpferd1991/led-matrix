@@ -21,6 +21,7 @@ public:
 	Cell getField(const unsigned int& column, const unsigned int& row) const;
 	void setField(const unsigned int& column, const unsigned int& row, const bool iniStatus);
 	void fillFieldMono(bool iniStatus);
+    void fillFieldRandom();
 	const uint8_t getSizeX() const { return this->m_sizeX; };
 	const uint8_t getSizeY() const { return this->m_sizeY; };
 

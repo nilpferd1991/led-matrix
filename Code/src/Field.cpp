@@ -6,6 +6,8 @@
  */
 
 #include <Field.h>
+#include <stdlib.h>     /* srand, rand */
+
 
 /**
 * Creates the playground with size x*y
@@ -48,4 +50,15 @@ void Field::fillFieldMono(bool iniStatus) {
 			m_field[x][y] = Cell(iniStatus);
 		}
 	}
+}
+
+/**
+ * Initializes the board randomly.
+ */
+void Field::fillFieldRandom() {
+    for (unsigned int x = 0; x<m_sizeX; ++x) {
+        for (unsigned int y = 0; y<m_sizeY; ++y) {
+            m_field[x][y] = Cell(rand() % 2);
+        }
+    }
 }
