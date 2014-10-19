@@ -15,7 +15,7 @@
 class Field {
 public:
 
-	Field(const uint8_t& sizeX, const uint8_t& sizeY);
+	Field();
 	virtual ~Field();
 
 	Cell getField(const unsigned int& column, const unsigned int& row) const;
@@ -30,16 +30,16 @@ private:
 	/**
 	 * Size of x direction of the board.
 	 */
-	const uint8_t m_sizeX;
+	static const uint8_t m_sizeX = 8;
 
 	/**
 	 * Size of y direction of the board.
 	 */
-	const uint8_t m_sizeY;
+	static const uint8_t m_sizeY = 8;
 
 	/**
 	 * The board internally.
 	 */
-	Cell m_field[16][16]; // this is hardware limited for us.
+	Cell m_field[8][8]; // this is hardware limited for us.
 };
 

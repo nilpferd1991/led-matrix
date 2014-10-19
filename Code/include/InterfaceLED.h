@@ -22,9 +22,11 @@ class InterfaceLED {
 public:
 	// Constructor
 	InterfaceLED();
+	InterfaceLED(Field * const field);
 	// Destructor
 	~InterfaceLED();
-	void showField(const Field & field, const uint16_t waitingTime = 1000);
+	void showField(const uint16_t waitingTime = 1000);
+	void waitCycles(const uint16_t cycles);
 
 private:
 
@@ -42,6 +44,10 @@ private:
 	 * m_strobePin is the pin of the CLOCK on Port B.
 	 */
 	static const uint8_t m_clockPin = 0;
+
+	static const uint8_t m_outputEnablePin = 3;
+
+	Field * m_field;
 
 };
 

@@ -10,13 +10,22 @@
 /**
  * Standard constructor.
  * The only constructor of the InterfaceLED class. It initializes the used Ports to output ports
- * and sets the output to Off befor any actions.
+ * and sets the output to Off before any actions.
  */
 InterfaceLED::InterfaceLED() {
 	DDRB = 0xFF;
 	PORTB = 0;
 	DDRC = 0xFF;
 	PORTC = 0;
+	m_field = 0;
+}
+
+InterfaceLED::InterfaceLED(Field * const field) {
+	DDRB = 0xFF;
+	PORTB = 0;
+	DDRC = 0xFF;
+	PORTC = 0;
+	m_field = field;
 }
 
 /**
@@ -36,14 +45,16 @@ InterfaceLED::~InterfaceLED() {
  * Values beyond approx. 2000 leed to flickering of the LEDs, values smaller than 100 make the LED too dark.
  * @todo just an implementation of two shift registers
  */
-void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
+void InterfaceLED::showField(const uint16_t waitingTime) {
 
 	// loop through all columns
-	for(uint8_t column = 0; column < field.getSizeX(); column++) {
+	for(uint8_t column = 0; column < m_field->getSizeX(); column++) {
+
+
+		PORTB &= ~(1 << InterfaceLED::m_outputEnablePin);
 
 		// Turn of writing on LED matrix
 		PORTB &= ~(1 << InterfaceLED::m_strobePin);
-		PORTC &= ~(1 << InterfaceLED::m_strobePin);
 
 		// first write column index to shift registers
 		for(uint8_t counter = 8; counter > 0; counter--) {
@@ -65,13 +76,19 @@ void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 		PORTB &= ~(1 << InterfaceLED::m_clockPin);
 		PORTB &= ~(1 << InterfaceLED::m_dataPin);
 
-		for(uint8_t row = 0; row < field.getSizeY(); row++) {
+		// Turn off writing on LED matrix
+		PORTB |= (1 << InterfaceLED::m_strobePin);
+
+		// Turn of writing on LED matrix
+		PORTC &= ~(1 << InterfaceLED::m_strobePin);
+
+		for(uint8_t row = 0; row < m_field->getSizeY(); row++) {
 			// one clock
 			PORTC |= (1 << InterfaceLED::m_clockPin);
 			PORTC &= ~(1 << InterfaceLED::m_clockPin);
 
 			// write 1 to data if cell is set
-			if(field.getField(column,row).getCellStatus() == true) {
+			if(m_field->getField(column,row).getCellStatus() == true) {
 				PORTC |= (1 << InterfaceLED::m_dataPin);
 			}
 			else {
@@ -84,14 +101,20 @@ void InterfaceLED::showField(const Field& field, const uint16_t waitingTime) {
 		PORTC &= ~(1 << InterfaceLED::m_clockPin);
 		PORTC &= ~(1 << InterfaceLED::m_dataPin);
 
-
 		// Turn off writing on LED matrix
-		PORTB |= (1 << InterfaceLED::m_strobePin);
 		PORTC |= (1 << InterfaceLED::m_strobePin);
+
+		PORTB |= (1 << InterfaceLED::m_outputEnablePin);
 
 		for(uint16_t time = waitingTime; time > 0; time--) {
 			_delay_us(1);
 		}
 	}
+}
 
+
+void InterfaceLED::waitCycles(uint16_t cycles) {
+	for(uint16_t t = 0; t < cycles; t++) {
+		showField();
+	}
 }

@@ -11,26 +11,25 @@
 
 #include <Field.h>
 #include <InterfaceLED.h>
+#include <Evolution.h>
 
 int main() {
-
-	// this is hardware restricted
-	const unsigned int nXLEDs(8);
-	const unsigned int nYLEDs(8);
-
+	
+	DDRD = 0xFF;
+	PORTD = 0xFF;
+	
 	// setup conways game of life
-	Field field(nXLEDs, nYLEDs);
-	field.fillFieldMono(false);
+	Field field;
+	field.fillFieldMono(true);
 
-	InterfaceLED interface;
-		field.setField(0,0, true);
-		field.setField(5,1, true);
-		field.setField(4,2, true);
-		field.setField(3,3, true);
-		field.setField(4,4, true);
+	InterfaceLED interface(&field);
+	Evolution evolve;
+
+	interface.waitCycles(64*7);
+	PORTD = 0x0;
 
 	while(1) {
-		interface.showField(field);
-//_delay_ms(1000);
+		interface.waitCycles(16);
+		field = evolve.evolve(field);
 	}
 }
