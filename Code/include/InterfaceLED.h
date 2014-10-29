@@ -1,4 +1,7 @@
+#pragma once
+
 /**
+
  * InterfaceLED-class to control the output of a field with boolean values
  * to the LED matrix.
  * It uses two shift registers to control the rows and columns independently.
@@ -10,8 +13,6 @@
 #include <util/delay.h>
 #include <Field.h>
 
-#ifndef INTERFACELED_H_
-#define INTERFACELED_H_
 
 #define OUTPUT_PORT PORTB
 #define OUTPUT_PORT_DDR DDRB
@@ -21,14 +22,14 @@
  * Sends signals to the shift registers to turn the LEDs on and off. Should be uses in the mainloop to
  * update the LED status permanent.
  */
-class InterfaceLED {
+class LEDMatrixHardware {
 public:
 	/**
 	 * Standard constructor.
 	 * The only constructor of the InterfaceLED class. It initializes the used Ports to output ports
 	 * and sets the output to Off before any actions.
 	 */
-	InterfaceLED() {
+	LEDMatrixHardware() {
 		OUTPUT_PORT_DDR = 0xFF;
 		OUTPUT_PORT = 0;
 	}
@@ -40,53 +41,53 @@ private:
 	void showField(const Field * const field, const uint16_t waitingTime = 1000) const;
 
 	void enableOutput() const {
-		OUTPUT_PORT |= (1 << InterfaceLED::m_outputEnablePin);
+		OUTPUT_PORT |= (1 << LEDMatrixHardware::m_outputEnablePin);
 	}
 	void disableOutput() const {
-		OUTPUT_PORT &= ~(1 << InterfaceLED::m_outputEnablePin);
+		OUTPUT_PORT &= ~(1 << LEDMatrixHardware::m_outputEnablePin);
 	}
 
 	void enableWritingColumns() const {
-		OUTPUT_PORT &= ~(1 << InterfaceLED::m_strobePin_1);
+		OUTPUT_PORT &= ~(1 << LEDMatrixHardware::m_strobePin_1);
 	}
 	void disableWritingColumns() const {
-		OUTPUT_PORT |= (1 << InterfaceLED::m_strobePin_1);
+		OUTPUT_PORT |= (1 << LEDMatrixHardware::m_strobePin_1);
 	}
 
 	void enableWritingRows() const {
-		OUTPUT_PORT &= ~(1 << InterfaceLED::m_strobePin_2);
+		OUTPUT_PORT &= ~(1 << LEDMatrixHardware::m_strobePin_2);
 	}
 	void disableWritingRows() const {
-		OUTPUT_PORT |= (1 << InterfaceLED::m_strobePin_2);
+		OUTPUT_PORT |= (1 << LEDMatrixHardware::m_strobePin_2);
 	}
 
 	void tickColumns() const {
-		OUTPUT_PORT |= (1 << InterfaceLED::m_clockPin_1);
-		OUTPUT_PORT &= ~(1 << InterfaceLED::m_clockPin_1);
+		OUTPUT_PORT |= (1 << LEDMatrixHardware::m_clockPin_1);
+		OUTPUT_PORT &= ~(1 << LEDMatrixHardware::m_clockPin_1);
 	}
 
 	void tickRows() const {
-		OUTPUT_PORT |= (1 << InterfaceLED::m_clockPin_2);
-		OUTPUT_PORT &= ~(1 << InterfaceLED::m_clockPin_2);
+		OUTPUT_PORT |= (1 << LEDMatrixHardware::m_clockPin_2);
+		OUTPUT_PORT &= ~(1 << LEDMatrixHardware::m_clockPin_2);
 	}
 
 	void setColumn(const bool status) const {
 		if (status) {
-			OUTPUT_PORT |= (1 << InterfaceLED::m_dataPin_1);
+			OUTPUT_PORT |= (1 << LEDMatrixHardware::m_dataPin_1);
 		}
 		else
 		{
-			OUTPUT_PORT &= ~(1 << InterfaceLED::m_dataPin_1);
+			OUTPUT_PORT &= ~(1 << LEDMatrixHardware::m_dataPin_1);
 		}
 	}
 
 	void setRow(const bool status) const {
 		if (status) {
-			OUTPUT_PORT |= (1 << InterfaceLED::m_dataPin_2);
+			OUTPUT_PORT |= (1 << LEDMatrixHardware::m_dataPin_2);
 		}
 		else
 		{
-			OUTPUT_PORT &= ~(1 << InterfaceLED::m_dataPin_2);
+			OUTPUT_PORT &= ~(1 << LEDMatrixHardware::m_dataPin_2);
 		}
 	}
 

@@ -18,8 +18,8 @@ public:
 	Field();
 	virtual ~Field();
 
-	Cell getField(const unsigned int& column, const unsigned int& row) const;
-	void setField(const unsigned int& column, const unsigned int& row, const bool iniStatus);
+	Cell getCell(const unsigned int& column, const unsigned int& row) const;
+	void setCell(const unsigned int& column, const unsigned int& row, const bool iniStatus);
 	void fillFieldMono(bool iniStatus);
     void fillFieldRandom();
 	const uint8_t getSizeX() const { return this->m_sizeX; };

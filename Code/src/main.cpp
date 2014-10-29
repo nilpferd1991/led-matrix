@@ -9,25 +9,20 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#include <Field.h>
-#include <InterfaceLED.h>
 #include <Animator.h>
 
 int main() {
-	// setup conways game of life
-	InterfaceLED interface;
+	// setup the class to handle the animation
+	Animator animator;
 
-	Animator animator(new Field);
-	animator.getField()->fillFieldMono(true);
-
-	// Starting
-	interface.showCycles(animator.getField(), 64);
-
-	// Blank
-	animator.getField()->fillFieldMono(false);
+	// Starting up: Show a blue screen
+	animator.setFieldMono(true);
+	animator.showCycles(64);
+	animator.setFieldMono(false);
 
 	// Main loop
 	while(1) {
-		interface.showCycles(animator.getNextGeneration(), 8);
+		animator.nextGeneration();
+		animator.showCycles(8);
 	}
 }

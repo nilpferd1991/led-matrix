@@ -1,20 +1,24 @@
 #include "../include/Animator.h"
 
-#include <Field.h>
-
-
-Animator::Animator(Field * const field) :
-		m_numberOfGenerations (0), m_field(field) {
+Animator::Animator() :
+		m_numberOfGenerations (0), m_field(new Field), m_interfaceToHardware(LEDMatrixHardware()) {
 }
 
-const Field* const  Animator::getNextGeneration() {
+void Animator::nextGeneration() {
 	m_field->fillFieldMono(false);
     unsigned int x = m_numberOfGenerations % 8;
     unsigned int y = m_numberOfGenerations % 8;
-    m_field->setField(7 - x, y, true);
-    m_field->setField(x, 7 - y, true);
-    m_field->setField(7- x, 7 - y, true);
-    m_field->setField(x, y, true);
+    m_field->setCell(7 - x, y, true);
+    m_field->setCell(x, 7 - y, true);
+    m_field->setCell(7- x, 7 - y, true);
+    m_field->setCell(x, y, true);
     ++m_numberOfGenerations;
-    return m_field;
+}
+
+void Animator::setFieldMono(bool status) {
+	m_field->fillFieldMono(status);
+}
+
+void Animator::showCycles(uint16_t numberOfCycles) {
+	m_interfaceToHardware(m_field, numberOfCycles);
 }

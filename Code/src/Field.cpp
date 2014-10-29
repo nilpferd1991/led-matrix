@@ -32,11 +32,11 @@ Field::~Field() {
  * @param row the row to be asked
  * @return Cell with adress [column, row]
  */
-Cell Field::getField(const unsigned int& column, const unsigned int& row) const {
+Cell Field::getCell(const unsigned int& column, const unsigned int& row) const {
 	return m_field[column][row];
 }
 
-void Field::setField(const unsigned int& column, const unsigned int& row, const bool iniStatus) {
+void Field::setCell(const unsigned int& column, const unsigned int& row, const bool iniStatus) {
 	m_field[column][row] = iniStatus;
 }
 

@@ -7,7 +7,7 @@
 
 #include "InterfaceLED.h"
 
-void InterfaceLED::writeRows(const Field* const field, uint8_t column) const {
+void LEDMatrixHardware::writeRows(const Field* const field, uint8_t column) const {
 	// Turn on writing on LED matrix
 	enableWritingRows();
 	for (uint8_t row = 0; row < field->getSizeY(); row++) {
@@ -23,7 +23,7 @@ void InterfaceLED::writeRows(const Field* const field, uint8_t column) const {
 	disableWritingRows();
 }
 
-void InterfaceLED::writeColumn(uint8_t column) const {
+void LEDMatrixHardware::writeColumn(uint8_t column) const {
 	enableWritingColumns();
 	// first write column index to shift registers
 	for (uint8_t counter = 8; counter > 0; counter--) {
@@ -48,7 +48,7 @@ void InterfaceLED::writeColumn(uint8_t column) const {
  * @param waitingTime the waiting time between to columns in µs. It controls the brightness of the LEDs.
  * Values beyond approx. 2000 leed to flickering of the LEDs, values smaller than 100 make the LED too dark.
  */
-void InterfaceLED::showField(const Field * const field, const uint16_t waitingTime) const {
+void LEDMatrixHardware::showField(const Field * const field, const uint16_t waitingTime) const {
 
 	// loop through all columns
 	for(uint8_t column = 0; column < field->getSizeX(); column++) {
@@ -65,7 +65,7 @@ void InterfaceLED::showField(const Field * const field, const uint16_t waitingTi
 }
 
 
-void InterfaceLED::showCycles(const Field * const field, uint16_t cycles) const {
+void LEDMatrixHardware::showCycles(const Field * const field, uint16_t cycles) const {
 	for(uint16_t t = 0; t < cycles; t++) {
 		showField(field);
 	}
