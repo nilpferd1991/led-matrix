@@ -9,11 +9,11 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#include <Animator.h>
+#include <SnakeAnimator.h>
 
 int main() {
 	// setup the class to handle the animation
-	Animator animator;
+	SnakeAnimator animator;
 
 	// Starting up: Show a blue screen
 	animator.setFieldMono(true);
@@ -22,7 +22,6 @@ int main() {
 
 	// Main loop
 	while(1) {
-		animator.nextGeneration();
-		animator.showCycles(8);
+		animator.mainloop();
 	}
 }
