@@ -118,5 +118,3 @@ private:
 	static const uint8_t m_outputEnablePin = 3;
 
 };
-
-#endif /* INTERFACELED_H_ */

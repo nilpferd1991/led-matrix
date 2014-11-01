@@ -20,5 +20,5 @@ void Animator::setFieldMono(bool status) {
 }
 
 void Animator::showCycles(uint16_t numberOfCycles) {
-	m_interfaceToHardware(m_field, numberOfCycles);
+	m_interfaceToHardware.showCycles(m_field, numberOfCycles);
 }

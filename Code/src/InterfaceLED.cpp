@@ -14,7 +14,7 @@ void LEDMatrixHardware::writeRows(const Field* const field, uint8_t column) cons
 		// one clock
 		tickRows();
 		// write 1 to data if cell is set
-		setRow(field->getField(column, row).getCellStatus());
+		setRow(field->getCell(column, row).getCellStatus());
 	}
 	// why is the last clock needed?
 	tickRows();
