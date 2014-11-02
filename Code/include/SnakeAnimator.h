@@ -7,7 +7,7 @@
 class SnakeAnimator : public Animator {
 public:
 	SnakeAnimator() : m_snakeLength(1), m_numberOfCompletedCycles(0),
-	m_currentSnakePosition(0, 0), m_foodPosition(0, 0) { Animator(); }
+	m_currentSnakePosition(0, 0), m_foodPosition(0, 0) { }
 
     void mainloop();
 
@@ -19,6 +19,7 @@ private:
 	void resetSnakeLength();
 	void snakeHasFoundFood();
 	void displayFullSnake();
+	void lookForFood();
 
     uint8_t m_snakeLength;
     uint8_t m_numberOfCompletedCycles;

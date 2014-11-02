@@ -36,15 +36,18 @@ void SnakeAnimator::displayFullSnake() {
 	}
 }
 
+void SnakeAnimator::lookForFood() {
+	if (m_foodPosition == m_currentSnakePosition) {
+		snakeHasFoundFood();
+	}
+}
+
 void SnakeAnimator::displaySnakeAndFood() {
 	getField()->fillFieldMono(false);
 
 	displayFullSnake();
 	displayFood();
-
-	if (m_foodPosition == m_currentSnakePosition) {
-		snakeHasFoundFood();
-	}
+	lookForFood();
 
     ++m_numberOfCompletedCycles;
 }

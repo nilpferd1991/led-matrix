@@ -82,7 +82,7 @@ SRC =
 
 
 # List C++ source files here. (C dependencies are automatically generated.)
-CPPSRC = src/main.cpp src/Field.cpp src/Cell.cpp src/InterfaceLED.cpp src/newdelete.cpp src/Animator.cpp src/SnakeAnimator.cpp src/Point.cpp
+CPPSRC := $(shell find src -name '*.cpp')
 
 # Optimization level, can be [0, 1, 2, 3, s].
 #     0 = turn off optimization. s = optimize for size.

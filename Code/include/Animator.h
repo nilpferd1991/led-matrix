@@ -5,18 +5,25 @@
 
 class Animator {
     public:
-        Animator();
-        void nextGeneration();
-        void heartShape();
-        void setFieldMono(bool status);
-        void showCycles(const uint16_t numberOfCycles);
-
+        Animator() : m_field(new Field), m_interfaceToHardware(LEDMatrixHardware()) { }
         void mainloop();
+        void flashInTheBeginning();
 
-        Field * const getField() const { return m_field; }
+        void heartShape();
+
+        void setFieldMono(bool status) {
+        	m_field->fillFieldMono(status);
+        }
+
+        void showCycles(const uint16_t numberOfCycles) {
+        	m_interfaceToHardware.showCycles(m_field, numberOfCycles);
+        }
+
+        Field * const getField() const {
+        	return m_field;
+        }
 
     private:
-        uint16_t m_numberOfGenerations;
         Field * m_field;
         LEDMatrixHardware m_interfaceToHardware;
 };

@@ -6,19 +6,12 @@
  * @brief TODO
  */
 
-#include <avr/io.h>
-#include <util/delay.h>
-
 #include <SnakeAnimator.h>
 
 int main() {
 	// setup the class to handle the animation
 	SnakeAnimator animator;
-
-	// Starting up: Show a blue screen
-	animator.setFieldMono(true);
-	animator.showCycles(64);
-	animator.setFieldMono(false);
+	animator.flashInTheBeginning();
 
 	// Main loop
 	while(1) {
