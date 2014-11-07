@@ -7,9 +7,11 @@ class Animator {
     public:
         Animator() : m_field(new Field), m_interfaceToHardware(LEDMatrixHardware()) { }
         void mainloop();
-        void flashInTheBeginning();
-
-        void heartShape();
+        void flashInTheBeginning() {
+        	setFieldMono(true);
+        	showCycles(64);
+        	setFieldMono(false);
+        }
 
         void setFieldMono(bool status) {
         	m_field->fillFieldMono(status);

@@ -1,13 +1,6 @@
-#include "../include/Animator.h"
+#include "../include/HeartAnimator.h"
 
-void Animator::flashInTheBeginning() {
-	// Starting up: Show a blue screen
-	setFieldMono(true);
-	showCycles(64);
-	setFieldMono(false);
-}
-
-void Animator::heartShape() {
+void HeartAnimator::heartShape() {
 	m_field->fillFieldMono(true);
 
 	m_field->setCell(0, 0, false);
